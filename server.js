@@ -24,7 +24,7 @@ app.get("/", (req, res) => {
   });
 });
 
-// ✅ FIXED LOGIN
+
 app.post("/auth/login", (req, res) => {
   try {
     const { email, password } = req.body;
@@ -59,7 +59,7 @@ app.post("/auth/login", (req, res) => {
   }
 });
 
-// ✅ FIXED OTP VERIFY
+
 app.post("/auth/verify-otp", (req, res) => {
   try {
     const { loginSessionId, otp } = req.body;
@@ -135,7 +135,7 @@ app.post("/auth/token", (req, res) => {
 });
 
 
-// Protected route
+
 app.get("/protected", authMiddleware, (req, res) => {
   return res.json({
     message: "Access granted",

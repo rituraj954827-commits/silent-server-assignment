@@ -11,7 +11,7 @@
 //     const secret = process.env.JWT_SECRET || "default-secret-key";
 //     const decoded = jwt.verify(token.replace("Bearer ", ""), secret);
 //     req.user = decoded;
-//     next(); // 🔥 REQUIRED
+//     next(); // 
 //   } catch (error) {
 //     return res.status(401).json({ error: "Invalid token" });
 //   }
@@ -32,7 +32,7 @@ module.exports = function (req, res, next) {
     const secret = process.env.JWT_SECRET || "default-secret-key";
     const decoded = jwt.verify(token, secret);
     req.user = decoded;
-    next(); // ✅ MUST be here
+    next(); 
   } catch (error) {
     return res.status(401).json({ error: "Invalid token" });
   }

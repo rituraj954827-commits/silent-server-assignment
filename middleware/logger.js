@@ -7,7 +7,7 @@
 //     console.log(`${req.method} ${req.url} -> ${res.statusCode} (${duration}ms)`);
 //   });
 
-//   next(); // 🔥 THIS LINE FIXES EVERYTHING
+//   next(); // 
 // };
 
 // module.exports = requestLogger;
@@ -22,7 +22,7 @@ const requestLogger = (req, res, next) => {
     console.log(`${req.method} ${req.url} -> ${res.statusCode} (${duration}ms)`);
   });
 
-  next(); // ✅ YOU MUST ADD THIS
+  next(); // 
 };
 
 module.exports = requestLogger;
