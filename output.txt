@@ -1,0 +1,43 @@
+# Task 1: Login
+$ curl -X POST http://localhost:3000/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{"email":"rajb77270@gmail.com","password":"Qazwsxedc@123"}'
+
+Response:
+{"message":"OTP sent","loginSessionId":"db7tc8"}
+
+Server Log:
+[OTP] Session db7tc8 generated: 155625
+
+
+# Task 2: Verify OTP
+$ curl -c cookies.txt -X POST http://localhost:3000/auth/verify-otp \
+  -H "Content-Type: application/json" \
+  -d '{"loginSessionId":"db7tc8","otp":"155625"}'
+
+Response:
+{"message":"OTP verified"}
+
+
+# Task 3: Get Token
+$ curl -b cookies.txt -X POST http://localhost:3000/auth/token
+
+Response:
+{"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...","expires_in":900}
+
+
+# Task 4: Protected Route
+$ curl -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
+  http://localhost:3000/protected
+
+Response:
+{
+  "message": "Access granted",
+  "user": {
+    "email": "rajb77270@gmail.com",
+    "sessionId": "db7tc8",
+    "iat": 1770993173,
+    "exp": 1770994073
+  },
+  "success_flag": "FLAG-XXXXXXXXXXXX"
+}
